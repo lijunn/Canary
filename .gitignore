@@ -1,27 +1,37 @@
+# Spring Boot specific
 /target/
-/log/
-!.mvn/wrapper/maven-wrapper.jar
+/build/
+!**/application*.yml
+!**/application*.properties
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-.meatdata/
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IDE
+.idea/
 *.iml
+*.iws
 *.ipr
 
-### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Logs
+/logs/
+
+# Maven
+.mvn/
+
+# Gradle
+.gradle/
+build/
+
+# Compiled class files
+*.class
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Miscellaneous
+.DS_Store
+
+
+
+
+
