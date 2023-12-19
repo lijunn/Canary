@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: cloud-eureka
+
+eureka:
+  server:
+    # 自我保护：表示即使服务心跳断开，也不会立即剔除该服务，用于保护网络波动造成的服务心跳断开
+    # 自我保护开启条件：1.enable-self-preservation = true 2.在续约期最后一分钟内，已经续约的服务数量小于 renewal-percent-threshold 这个比例
+    enable-self-preservation: true
+    # 续约阈值，和自我保护相关
+    renewal-percent-threshold: 0.85
+    # server剔除过期服务的时间间隔
+    eviction-interval-timer-in-ms: 1000
+    # 是否开启readOnly读缓存
+    use-read-only-response-cache: true
+    # readOnly 刷新时间间隔
+    response-cache-update-interval-ms: 1000
+
+
+  client:
+    # 是否可以被其他服务发现（作为注册中心不用被其他服务发现）
+    register-with-eureka: false
+    # 是否拉取注册表信息（作为注册中心不用拉取注册表信息）
+    fetch-registry: false
+    # 配置注册中心地址，用于集群之间数据同步
+    serviceUrl:
+      defaultZone: http://localhost:7901/eureka/,http://localhost:7902/eureka/,http://localhost:7903/eureka/
+
+
+
+# ------------- EurekaServer 集群配置 -------------
+
+# EurekaServer 1
+---
+spring:
+  profiles: 7901
+server:
+  port: 7901
+
+# EurekaServer 2
+---
+spring:
+  profiles: 7902
+server:
+  port: 7902
+
+# EurekaServer 3
+---
+spring:
+  profiles: 7903
+server:
+  port: 7903
