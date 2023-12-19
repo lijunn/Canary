@@ -1,8 +1,7 @@
 # Spring Boot specific
 /target/
 /build/
-!**/application*.yml
-!**/application*.properties
+
 
 # IDE
 .idea/
