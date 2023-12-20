@@ -6,10 +6,25 @@ spring:
   application:
     name: cloud-zuul
 
-
+# 注册中心
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7901/eureka/,http://localhost:7902/eureka/,http://localhost:7903/eureka/
   instance:
     instance-id: cloud-zuul
+
+
+# 路由配置
+zuul:
+  routes:
+    # 路由规则名（自定义）
+    service-sms:
+      # 映射路径：匹配该路径的请求会转发到对应服务名称的服务，如果有多台实例，会进行负载均衡
+      path: /sms/**
+      # 是否移除 path 中包含的上下文路径（即：server.servlet.context-path 配置的路径）
+      strip-prefix: false
+      # 注册中心，服务应用名称
+      serviceId: service-sms
+
+

@@ -2,16 +2,17 @@ package com.lijun.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.netflix.zuul.exception.ZuulException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
-import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author : LiJun
  * @date : 2023-12-19 15:45
  **/
+@Slf4j
+@Component
 public class AuthFilter extends ZuulFilter {
 
     /**
@@ -43,9 +44,11 @@ public class AuthFilter extends ZuulFilter {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
         String requestUri= request.getRequestURI();
+        log.info("shouldFilter: "+requestUri);
 
-        String checkUri = "api";
-        return requestUri.contains(checkUri);
+        //todo 是否需要授权
+
+        return false;
     }
 
     /**
@@ -53,17 +56,13 @@ public class AuthFilter extends ZuulFilter {
      * @return  返回NULL,继续向后执行
      */
     @Override
-    public Object run() throws ZuulException {
+    public Object run() {
         //上下文贯穿 所有filter，包含所有参数
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
+        log.info("run: "+request.getRequestURI());
 
-        // option请求，直接放行
-        if (request.getMethod().equals(RequestMethod.OPTIONS.name())) {
-            return null;
-        }
-
-        String token = request.getHeader("Authorization");
+        //todo 授权校验
 
         return null;
     }
