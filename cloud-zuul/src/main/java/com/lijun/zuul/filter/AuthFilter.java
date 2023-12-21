@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 授权过滤器
+ *
  * @author : LiJun
  * @date : 2023-12-19 15:45
  **/
@@ -18,7 +20,7 @@ public class AuthFilter extends ZuulFilter {
     /**
      * 定义过滤器类型
      *      pre     ：   在执行路由请求之前执行
-     *      routing ：   在路由请求是调用
+     *      routing ：   在路由请求时调用
      *      post    ：   在routing和error过滤器之后执行
      *      error   ：   处理请求出现异常的时候执行
      */

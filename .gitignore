@@ -1,5 +1,5 @@
 # Spring Boot specific
-/target/
+*/target/
 /build/
 
 
@@ -29,8 +29,3 @@ build/
 
 # Miscellaneous
 .DS_Store
-
-
-
-
-

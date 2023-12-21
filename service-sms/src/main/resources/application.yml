@@ -57,7 +57,6 @@ eureka:
     lease-renewal-interval-in-seconds: 30
 
 
-
 #----- 集群配置 -----
 
 ---
@@ -71,3 +70,21 @@ spring:
   profiles: 8002
 server:
   port: 8002
+
+eureka:
+  instance:
+    metadata-map:
+      # 灰度版本
+      Gray-Version: gray
+
+---
+spring:
+  profiles: 8003
+server:
+  port: 8003
+
+eureka:
+  instance:
+    metadata-map:
+      # 灰度版本
+      Gray-Version: gray
