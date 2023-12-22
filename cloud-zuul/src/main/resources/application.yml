@@ -27,4 +27,5 @@ zuul:
       # 注册中心，服务应用名称
       serviceId: service-sms
 
+spring.redis.
 
