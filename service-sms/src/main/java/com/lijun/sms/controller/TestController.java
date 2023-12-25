@@ -10,6 +10,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
+ * 短信服务测试
  * @author : LiJun
  * @date : 2023-12-20 11:41
  **/
@@ -27,6 +28,6 @@ public class TestController {
 
         int random = RandomUtil.getRandom().nextInt(5);
 
-        return ResponseResult.success("服务: "+ address + " random:"+random);
+        return ResponseResult.success("短信服务: "+ address + " random:"+random);
     }
 }

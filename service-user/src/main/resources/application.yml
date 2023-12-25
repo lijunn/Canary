@@ -1,8 +1,8 @@
 server:
   # 服务端口
-  port: 8080
+  port: 7001
   servlet:
-    context-path: /uesr
+    context-path: /user
 
 
 spring:
@@ -55,3 +55,34 @@ eureka:
   instance:
     # 续约间隔（心跳间隔）
     lease-renewal-interval-in-seconds: 30
+
+
+#----- 集群配置 -----
+
+---
+spring:
+  profiles: 7001
+server:
+  port: 7001
+
+---
+spring:
+  profiles: 7002
+server:
+  port: 7002
+eureka:
+  instance:
+    metadata-map:
+      # 灰度版本
+      Gray-Version: gray
+
+---
+spring:
+  profiles: 7003
+server:
+  port: 7003
+eureka:
+  instance:
+    metadata-map:
+      # 灰度版本
+      Gray-Version: gray

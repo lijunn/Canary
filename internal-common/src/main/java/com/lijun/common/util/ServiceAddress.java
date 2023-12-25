@@ -9,15 +9,15 @@ public class ServiceAddress {
     /**
      * 短信服务名
      */
-    String SERVICE_SMS_URL = "http://service-sms";
+    public static final String SERVICE_SMS_URL = "http://service-sms";
 
     /**
      * 用户服务
      */
-     String SERVICE_USER_URL = "http://service-user";
+    public static final String SERVICE_USER_URL = "http://service-user";
 
 
     public static String getServiceSmsUrl(String path){
-
+        return SERVICE_SMS_URL+path;
     }
 }

@@ -1,9 +1,6 @@
 server:
   # 服务端口
   port: 8001
-  servlet:
-    context-path: /sms
-
 
 spring:
   application:

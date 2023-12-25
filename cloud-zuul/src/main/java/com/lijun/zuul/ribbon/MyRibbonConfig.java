@@ -1,5 +1,6 @@
 package com.lijun.zuul.ribbon;
 
+import com.lijun.common.http.GrayServer;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RoundRobinRule;
 import org.springframework.context.annotation.Bean;
@@ -14,9 +15,22 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MyRibbonConfig {
 
+    /**
+     * 初始化灰度
+     */
+    @Bean
+    public GrayServer getGrayServer(){
+        return new GrayServer();
+    }
+
+    /**
+     * 初始化复杂均衡策略
+     */
     @Bean
     public IRule ribbonRule(){
-        return new GrayRule();
+        MyRibbonRule myRibbonRule = new MyRibbonRule();
+        myRibbonRule.setGrayServer(getGrayServer());
+        return myRibbonRule;
     }
 
 }

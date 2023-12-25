@@ -1,10 +1,11 @@
 package com.lijun.user.ribbon;
 
+import com.lijun.common.http.GrayServer;
+import com.lijun.common.http.MyRestTemplate;
 import com.netflix.loadbalancer.IRule;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * 负载均衡策略配置
@@ -15,14 +16,24 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class MyRibbonConfig {
 
+
+    /**
+     * 初始化灰度
+     */
+    @Bean
+    public GrayServer getGrayServer(){
+        return new GrayServer();
+    }
+
     /**
      * 初始化复杂均衡策略
      */
     @Bean
     public IRule ribbonRule(){
-        return new GrayRule();
+        MyRibbonRule myRibbonRule = new MyRibbonRule();
+        myRibbonRule.setGrayServer(getGrayServer());
+        return myRibbonRule;
     }
-
 
     /**
      * 初始化 RestTemplate
@@ -30,8 +41,8 @@ public class MyRibbonConfig {
      */
     @Bean
     @LoadBalanced
-    public RestTemplate getRestTemplate(){
-        return new RestTemplate();
+    public MyRestTemplate getRestTemplate(){
+        return new MyRestTemplate();
     }
 
 }
