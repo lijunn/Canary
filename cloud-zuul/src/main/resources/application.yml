@@ -29,9 +29,14 @@ zuul:
       # 注册中心，服务应用名称
       serviceId: service-user
 
+    # 转发到zuul自己
+    zull-forward:
+      path: /zuul/**
+      url: forward:/
+
   # 忽略默认路由规则（忽略直接使用网关+服务名访问）
   ignored-services:
     - service-user
 
-  # 忽略请求头敏感信息（不配置表示忽略所有）
-  sensitive-headers: token
+  # 忽略请求头敏感信息（默认值为 "Cookie", "Set-Cookie", "Authorization" ，如果配置空则表示所有请求头都会转发到下游服务）
+  sensitive-headers:
