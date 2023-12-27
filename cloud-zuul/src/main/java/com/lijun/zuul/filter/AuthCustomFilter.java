@@ -1,6 +1,5 @@
 package com.lijun.zuul.filter;
 
-import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  **/
 @Slf4j
 @Component
-public class AuthFilter extends ZuulFilter {
+public class AuthCustomFilter extends BaseCustomFilter {
 
     /**
      * 定义过滤器类型
@@ -34,7 +33,7 @@ public class AuthFilter extends ZuulFilter {
      */
     @Override
     public int filterOrder() {
-        return -1;
+        return 0;
     }
 
     /**
@@ -43,8 +42,15 @@ public class AuthFilter extends ZuulFilter {
     @Override
     public boolean shouldFilter() {
         //获取请求上下文，拿到request信息
-        RequestContext requestContext = RequestContext.getCurrentContext();
-        HttpServletRequest request = requestContext.getRequest();
+        RequestContext currentContext = RequestContext.getCurrentContext();
+
+        //不执行该过滤器
+        if (isBreak()){
+            return false;
+        }
+
+
+        HttpServletRequest request = currentContext.getRequest();
         String requestUri= request.getRequestURI();
         log.info("shouldFilter: "+requestUri);
 

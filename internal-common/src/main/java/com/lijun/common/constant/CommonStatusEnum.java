@@ -9,6 +9,28 @@ import lombok.Getter;
 
 public enum CommonStatusEnum {
 
+    /**
+     * 	操作异常
+     */
+    INTERNAL_SERVER_EXCEPTION(-1, "exception"),
+
+    /**
+     * 	操作成功
+     */
+    SUCCESS(0, "success"),
+
+    /**
+     * 	操作失败
+     */
+    FAIL(1, "fail"),
+
+    /**
+     * 	限流
+     */
+    LIMIT(2, "你被限流了"),
+
+
+
     /**短信验证码服务	10001-10099*/
     VERIFY_CODE_ERROR(10001,"短信验证码验证失败"),
 
@@ -28,23 +50,11 @@ public enum CommonStatusEnum {
 
     /**api-passenger 乘客api  10101-10199*/
     PHONE_NUMBER_EMPTY(10101,"手机号为空"),
-    PHONE_NUMBER_ERROR(10102,"手机号格式不正确"),
+    PHONE_NUMBER_ERROR(10102,"手机号格式不正确")
 
 
-    /**
-     * 	操作成功
-     */
-    SUCCESS(0, "success"),
+    ;
 
-    /**
-     * 	操作异常
-     */
-    INTERNAL_SERVER_EXCEPTION(-1, "exception"),
-
-    /**
-     * 	操作失败
-     */
-    FAIL(1, "fail");
 
     @Getter
     private final int code;

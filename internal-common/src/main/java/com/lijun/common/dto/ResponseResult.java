@@ -54,8 +54,8 @@ public class ResponseResult<T> implements Serializable {
      * @param message 错误消息
      * @return ResponseResult实例
      */
-    public static ResponseResult<Object> fail(int code, String message) {
-        return new ResponseResult<Object>().setCode(code).setMessage(message);
+    public static ResponseResult<Object> fail(CommonStatusEnum statusEnum) {
+        return new ResponseResult<Object>().setCode(statusEnum.getCode()).setMessage(statusEnum.getValue()).setData(null);
     }
 
     /**
