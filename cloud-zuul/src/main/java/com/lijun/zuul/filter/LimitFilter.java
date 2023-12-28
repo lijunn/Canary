@@ -10,19 +10,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 /**
- * 限流过滤器
+ * 网关限流过滤器
  * @author : LiJun
  * @date : 2023-12-27 14:41
  **/
 @Component
-public class LimitCustomFilter extends BaseCustomFilter {
+public class LimitFilter extends BaseCustomFilter {
 
     /**
      * 创建令牌桶，设置令牌生成速率为：每秒2个
      * 如果参数设置为 0.1 表示每秒10个
      */
     @SuppressWarnings("all")
-    public static final RateLimiter RATE_LIMITER = RateLimiter.create(1);
+    public static final RateLimiter RATE_LIMITER = RateLimiter.create(10);
 
 
     @Override
@@ -53,7 +53,7 @@ public class LimitCustomFilter extends BaseCustomFilter {
 
             currentContext.setResponseStatusCode(HttpStatus.TOO_MANY_REQUESTS.value());
             currentContext.getResponse().setContentType("application/json; charset=utf-8");
-            currentContext.setResponseBody(JSONUtil.toJsonStr(ResponseResult.fail(CommonStatusEnum.LIMIT)));
+            currentContext.setResponseBody(JSONUtil.toJsonStr(ResponseResult.limit("网关限流")));
         }
         return null;
     }

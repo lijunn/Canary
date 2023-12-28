@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  **/
 @Slf4j
 @Component
-public class AuthCustomFilter extends BaseCustomFilter {
+public class AuthFilter extends BaseCustomFilter {
 
     /**
      * 定义过滤器类型
