@@ -1,0 +1,93 @@
+server:
+  # 服务端口
+  port: 7001
+
+spring:
+  application:
+    # 应用名称
+    name: service-order
+
+  # 数据库连接配置
+  datasource:
+    # 配置当前使用的数据源的操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 配置MySQL的驱动程序类
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库连接地址
+    url: jdbc:mysql://localhost:3306/canary?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    # 数据库连接用户名
+    username: root
+    # 数据库连接密码
+    password: 1234
+
+    # 进行数据库连接池的配置
+    dbcp2:
+      # 初始化提供的连接数
+      initial-size: 5
+      # 数据库连接池的最小维持连接数
+      min-idle: 5
+      # 最大的连接数
+      max-total: 5
+      # 等待连接获取的最大超时时间
+      max-wait-millis: 200
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+# mybatis
+mybatis:
+  mapper-locations:
+  - classpath:mapper/*.xml
+
+# RocketMq
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: testG1
+    send-message-timeout: 300000
+
+
+
+# 注册中心配置
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://localhost:7901/eureka/,http://localhost:7902/eureka/,http://localhost:7903/eureka/
+    # 拉取注册表时间间隔
+    registry-fetch-interval-seconds: 30
+  instance:
+    # 续约间隔（心跳间隔）
+    lease-renewal-interval-in-seconds: 30
+
+
+#----- 集群配置 -----
+
+---
+spring:
+  profiles: 7001
+server:
+  port: 7001
+
+---
+spring:
+  profiles: 7002
+server:
+  port: 7002
+eureka:
+  instance:
+    metadata-map:
+      # 灰度版本
+      Gray-Version: gray
+
+---
+spring:
+  profiles: 7003
+server:
+  port: 7003
+eureka:
+  instance:
+    metadata-map:
+      # 灰度版本
+      Gray-Version: gray

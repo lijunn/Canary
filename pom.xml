@@ -14,7 +14,7 @@
         <module>cloud-eureka</module>
         <module>internal-common</module>
         <module>cloud-zuul</module>
-        <module>service-sms</module>
-        <module>service-user</module>
+        <module>service-order</module>
+        <module>service-account</module>
     </modules>
 </project>

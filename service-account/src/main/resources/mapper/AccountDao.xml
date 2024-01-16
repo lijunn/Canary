@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lijun.account.mapper.AccountDao">
+  <resultMap id="BaseResultMap" type="com.lijun.account.entity.Account">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+      id, account_name, phone
+    from account
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lijun.account.entity.Account" useGeneratedKeys="true">
+    insert into account (account_name, phone)
+    values (#{accountName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lijun.account.entity.Account" useGeneratedKeys="true">
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accountName != null">
+        account_name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accountName != null">
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.lijun.account.entity.Account">
+    update account
+    <set>
+      <if test="accountName != null">
+        account_name = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.lijun.account.entity.Account">
+    update account
+    set account_name = #{accountName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

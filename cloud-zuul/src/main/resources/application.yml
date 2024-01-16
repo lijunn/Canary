@@ -21,13 +21,13 @@ zuul:
   prefix: /api
   routes:
     # 路由规则名（自定义）
-    service-user:
+    service-order:
       # 映射路径：匹配该路径的请求会转发到对应服务名称的服务，如果有多台实例，会进行负载均衡
-      path: /user/**
+      path: /order/**
       # 转发前是否移除 path 中的前缀
       strip-prefix: true
       # 注册中心，服务应用名称
-      serviceId: service-user
+      serviceId: service-order
 
     # 转发到zuul自己
     zull-forward:
@@ -35,8 +35,8 @@ zuul:
       url: forward:/
 
   # 忽略默认路由规则（忽略直接使用网关+服务名访问）
-  ignored-services:
-    - service-user
+#  ignored-services:
+#    - service-order
 
   # 忽略请求头敏感信息（默认值为 "Cookie", "Set-Cookie", "Authorization" ，如果配置空则表示所有请求头都会转发到下游服务）
   sensitive-headers:
