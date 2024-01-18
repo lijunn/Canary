@@ -8,7 +8,7 @@ import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import com.google.common.util.concurrent.RateLimiter;
-import com.lijun.common.dto.ResponseResult;
+import com.lijun.canary.dto.ResponseResult;
 import com.netflix.zuul.context.RequestContext;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;

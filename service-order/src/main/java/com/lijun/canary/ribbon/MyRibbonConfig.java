@@ -1,7 +1,9 @@
-package com.lijun.zuul.ribbon;
+package com.lijun.canary.ribbon;
 
 import com.lijun.canary.http.GrayServer;
+import com.lijun.canary.http.MyRestTemplate;
 import com.netflix.loadbalancer.IRule;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
  **/
 @Configuration
 public class MyRibbonConfig {
+
 
     /**
      * 初始化灰度
@@ -30,6 +33,16 @@ public class MyRibbonConfig {
         MyRibbonRule myRibbonRule = new MyRibbonRule();
         myRibbonRule.setGrayServer(getGrayServer());
         return myRibbonRule;
+    }
+
+    /**
+     * 初始化 RestTemplate
+     * 并启用负载均衡
+     */
+    @Bean
+    @LoadBalanced
+    public MyRestTemplate getRestTemplate(){
+        return new MyRestTemplate();
     }
 
 }

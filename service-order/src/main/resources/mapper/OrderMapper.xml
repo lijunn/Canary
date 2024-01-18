@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lijun.order.mapper.OrderMapper">
+<mapper namespace="com.lijun.canary.mapper.OrderMapper">
 
-    <insert id="insert" parameterType="com.lijun.order.entity.Order" useGeneratedKeys="true" keyProperty="id">
-        insert into `order`(goods_name,total,uid)
-        value (#{order.goodsName},#{order.total},#{order.uid})
+    <insert id="insert" parameterType="com.lijun.canary.entity.Order" useGeneratedKeys="true" keyProperty="id">
+        insert into `order`(goods_name,total,uid,order_number)
+        value (#{order.goodsName},#{order.total},#{order.uid},#{order.orderNumber})
     </insert>
-    <select id="selectByOrderNumber" resultType="com.lijun.common.dto.order.OrderDto">
+
+    <select id="selectByOrderNumber" resultType="com.lijun.canary.dto.order.OrderDto">
         select id,total,goods_name,uid from `order` where order_number = #{orderNumber}
     </select>
 

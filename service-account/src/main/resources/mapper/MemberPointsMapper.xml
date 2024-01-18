@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lijun.account.mapper.MemberPointsMapper">
+<mapper namespace="com.lijun.canary.mapper.MemberPointsMapper">
 
 
     <update id="updateByUid">
@@ -8,8 +8,8 @@
         where uid = #{uid}
     </update>
 
-    <select id="existByUid" resultType="java.lang.Boolean">
-        select count(*) > 0 from member_points where uid = #{uid}
+    <select id="selectByUid" resultType="com.lijun.canary.entity.MemberPoints">
+        select * from member_points where uid = #{uid}
     </select>
 
 </mapper>

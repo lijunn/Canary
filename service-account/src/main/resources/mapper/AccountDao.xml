@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lijun.account.mapper.AccountDao">
-  <resultMap id="BaseResultMap" type="com.lijun.account.entity.Account">
+<mapper namespace="com.lijun.canary.mapper.AccountDao">
+  <resultMap id="BaseResultMap" type="com.lijun.canary.entity.Account">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="account_name" jdbcType="VARCHAR" property="accountName" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
@@ -14,12 +14,12 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
 
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lijun.account.entity.Account" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lijun.canary.entity.Account" useGeneratedKeys="true">
     insert into account (account_name, phone)
     values (#{accountName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
   </insert>
 
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lijun.account.entity.Account" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lijun.canary.entity.Account" useGeneratedKeys="true">
     insert into account
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="accountName != null">
@@ -39,7 +39,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.lijun.account.entity.Account">
+  <update id="updateByPrimaryKeySelective" parameterType="com.lijun.canary.entity.Account">
     update account
     <set>
       <if test="accountName != null">
@@ -52,7 +52,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="com.lijun.account.entity.Account">
+  <update id="updateByPrimaryKey" parameterType="com.lijun.canary.entity.Account">
     update account
     set account_name = #{accountName,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR}

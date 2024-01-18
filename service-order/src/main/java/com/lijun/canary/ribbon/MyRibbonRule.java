@@ -1,10 +1,9 @@
-package com.lijun.zuul.ribbon;
+package com.lijun.canary.ribbon;
 
 import com.lijun.canary.http.GrayServer;
 import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.*;
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.*;
 
 /**
@@ -36,11 +35,10 @@ public class MyRibbonRule extends AbstractLoadBalancerRule {
         //将灰度规则过滤后的服务列表进行负载均衡
         ILoadBalancer newLb = new BaseLoadBalancer();
         newLb.addServers(servers);
-        RandomRule rule = new RandomRule();
-        Server server = rule.choose(newLb,null);
+        RoundRobinRule robinRule = new RoundRobinRule();
+        Server server = robinRule.choose(newLb,null);
 
         log.info("select-service: {}",server.getMetaInfo().getInstanceId());
         return server;
     }
-
 }
