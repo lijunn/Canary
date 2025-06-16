@@ -4,7 +4,7 @@ import com.lijun.canary.constant.ResponseStatusEnum;
 
 /**
  * @author : LiJun
- * @date : 2024-01-18 15:30
+ * @since : 2024-01-18 15:30
  **/
 public class BusinessException extends RuntimeException{
 

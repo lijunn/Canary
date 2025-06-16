@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author : LiJun
- * @date : 2023-12-25 15:46
+ * @since : 2023-12-25 15:46
  **/
 public class MyRestTemplate extends RestTemplate {
 

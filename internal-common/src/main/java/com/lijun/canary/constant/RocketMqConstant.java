@@ -2,7 +2,7 @@ package com.lijun.canary.constant;
 
 /**
  * @author : LiJun
- * @date : 2024-01-15 10:53
+ * @since : 2024-01-15 10:53
  **/
 public interface RocketMqConstant {
 

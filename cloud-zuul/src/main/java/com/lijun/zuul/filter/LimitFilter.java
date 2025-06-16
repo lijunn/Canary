@@ -22,7 +22,7 @@ import java.util.List;
  * 网关限流过滤器
  *
  * @author : LiJun
- * @date : 2023-12-27 14:41
+ * @since : 2023-12-27 14:41
  **/
 @Component
 public class LimitFilter extends BaseCustomFilter implements InitializingBean {

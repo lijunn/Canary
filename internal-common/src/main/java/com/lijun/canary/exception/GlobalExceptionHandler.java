@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 /**
  * Controller 全局异常处理
  * @author : LiJun
- * @date : 2024-01-18 14:41
+ * @since : 2024-01-18 14:41
  **/
 @Slf4j
 @RestControllerAdvice

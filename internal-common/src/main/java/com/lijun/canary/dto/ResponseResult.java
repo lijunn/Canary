@@ -13,7 +13,7 @@ import java.io.Serializable;
  * chain的中文含义是链式的，设置为true，则setter方法返回当前对象
  *
  * @author : LiJun
- * @date : 2023-12-19 11:47
+ * @since : 2023-12-19 11:47
  */
 @Data
 @Accessors(chain = true)

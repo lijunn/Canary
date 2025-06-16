@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * @author : LiJun
- * @date : 2024-01-15 14:27
+ * @since : 2024-01-15 14:27
  **/
 @Mapper
 public interface MemberPointsMapper {

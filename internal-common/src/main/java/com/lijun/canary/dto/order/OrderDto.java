@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 /**
  * @author : LiJun
- * @date : 2024-01-15 14:13
+ * @since : 2024-01-15 14:13
  **/
 @Data
 public class OrderDto {

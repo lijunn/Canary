@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * 负载均衡策略配置
  *
  * @author : LiJun
- * @date : 2023-12-20 15:19
+ * @since : 2023-12-20 15:19
  **/
 @Configuration
 public class MyRibbonConfig {

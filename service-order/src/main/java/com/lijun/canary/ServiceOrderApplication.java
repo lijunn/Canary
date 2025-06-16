@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author : LiJun
- * @date : 2023-12-19 14:48
+ * @since : 2023-12-19 14:48
  **/
 @SpringBootApplication
 public class ServiceOrderApplication {

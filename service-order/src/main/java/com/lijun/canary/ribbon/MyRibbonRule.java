@@ -10,7 +10,7 @@ import java.util.*;
  * 灰度发布-负载均衡
  *
  * @author : LiJun
- * @date : 2023-12-20 15:21
+ * @since : 2023-12-20 15:21
  **/
 @Slf4j
 public class MyRibbonRule extends AbstractLoadBalancerRule {

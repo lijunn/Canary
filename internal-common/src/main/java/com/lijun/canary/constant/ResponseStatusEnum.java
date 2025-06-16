@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * 返回状态枚举
  * @author : LiJun
- * @date : 2023-12-19 11:47
+ * @since : 2023-12-19 11:47
  **/
 public enum ResponseStatusEnum {
 

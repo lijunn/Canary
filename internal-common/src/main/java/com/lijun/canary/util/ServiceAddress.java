@@ -2,7 +2,7 @@ package com.lijun.canary.util;
 
 /**
  * @author : LiJun
- * @date : 2023-12-22 18:59
+ * @since : 2023-12-22 18:59
  **/
 public class ServiceAddress {
 

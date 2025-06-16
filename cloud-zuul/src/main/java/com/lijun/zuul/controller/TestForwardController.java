@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 测试 zuul forward
  * @author : LiJun
- * @date : 2023-12-26 17:25
+ * @since : 2023-12-26 17:25
  **/
 @Slf4j
 @RestController

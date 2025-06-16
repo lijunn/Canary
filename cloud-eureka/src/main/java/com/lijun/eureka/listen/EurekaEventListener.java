@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * Eureka 事件监听器
  * @author : LiJun
- * @date : 2023-12-19 11:55
+ * @since : 2023-12-19 11:55
  **/
 @Slf4j
 @Component

@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * @author : LiJun
- * @date : 2024-01-15 14:22
+ * @since : 2024-01-15 14:22
  */
 @Data
 public class Account implements Serializable {

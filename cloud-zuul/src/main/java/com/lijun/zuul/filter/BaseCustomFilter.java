@@ -6,7 +6,7 @@ import com.netflix.zuul.context.RequestContext;
 /**
  * 自定义过滤器 基础类
  * @author : LiJun
- * @date : 2023-12-27 17:19
+ * @since : 2023-12-27 17:19
  **/
 public abstract class BaseCustomFilter extends ZuulFilter {
 
